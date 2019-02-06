@@ -1,10 +1,10 @@
 # Multipla
 
-#Installer Node Http server :
+## Installer Node Http server :
 
 npm install http-server -g
 
-#lancer le serveur Http : 
+## lancer le serveur Http : 
 
 Dans le dossier racine du projet : 
 

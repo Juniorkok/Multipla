@@ -8,8 +8,4 @@ npm install http-server -g
 
 Dans le dossier racine du projet : 
 
-http-server ./
-
-ou 
-
 http-server

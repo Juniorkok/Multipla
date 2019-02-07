@@ -29,12 +29,41 @@ export default class Header {
     const accueilA = createDOMElement('a', ['nav-link'], {'href': '#accueil'}, 'Accueil');
     const voituresLi = createDOMElement('li', ['nav-item']);
     const voituresA = createDOMElement('a', ['nav-link'], {'href': '#voitures'}, 'Voitures');
+    const navbarContentRight = createDOMElement('ul', ['navbar-nav','ml-auto']);
+    const toggleSun = createDOMElement('li', ['nav-item', 'center']);
+    const toggleLabel = createDOMElement('li', ['nav-item']);
+    const toggleMoon = createDOMElement('li', ['nav-item']);
+    const labelSwitch = createDOMElement('label', ['switch']);
+    const inputSwitch = createDOMElement('input', [], {
+      'type': 'checkbox',
+      'id': 'switchDarkLight'
+    });
+    const spanSwitch = createDOMElement('span', ['slider', 'round']);
+
+    function toggleDarkLight(){
+      var body = document.getElementById("body");
+      var currentClass = body.className;
+      body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+    }
+
+    toggleSun.innerHTML = '🌞';
+    toggleMoon.innerHTML = '🌛';
+
+    inputSwitch.addEventListener('change', toggleDarkLight);
 
     accueilLi.appendChild(accueilA);
     voituresLi.appendChild(voituresA);
     navbarContentList.appendChild(accueilLi);
     navbarContentList.appendChild(voituresLi);
     navbarContent.appendChild(navbarContentList);
+    labelSwitch.append(inputSwitch);
+    labelSwitch.append(spanSwitch);
+    //navbarContentRight.appendChild(labelSwitch);
+    navbarContentRight.appendChild(toggleSun);
+    navbarContentRight.appendChild(toggleLabel);
+    toggleLabel.appendChild(labelSwitch);
+    navbarContentRight.appendChild(toggleMoon);
+    navbarContent.appendChild(navbarContentRight);
     navbar.append(navbarContent);
 
     this.parent.appendChild(navbar);

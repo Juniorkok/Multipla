@@ -34,6 +34,7 @@ export default class Content {
         cardImg.style.height = '200px';
         const cardBody = createDOMElement('div', ['card-body']);
         const cardTitle = createDOMElement('h5', ['card-title'], {}, voiture.nom);
+        const boutoncard = createDOMElement('a', ['btn','btn-primary'] ,{'href': '#details' }, 'Détails');
 
         // Cree le click listener
         function onClick() {
@@ -44,7 +45,7 @@ export default class Content {
           input.addEventListener('blur', () => {
             voitures[index].nom = input.value;
 
-            // Modifier la valeu dans lo localStorage
+            // Modifier la valeur dans lo localStorage
             localStorage.setItem('voitures', JSON.stringify(voitures));
             cardBody.removeChild(input);
 
@@ -52,6 +53,7 @@ export default class Content {
             const newCardTitle = createDOMElement('h5', ['card-title'], {}, voitures[index].nom);
             newCardTitle.addEventListener('click', onClick);
             cardBody.appendChild(newCardTitle);
+            cardBody.appendChild(boutoncard);
           });
 
           cardBody.removeChild(this);
@@ -61,8 +63,8 @@ export default class Content {
 
         // Ajouter un click listener
         cardTitle.addEventListener('click', onClick);
-
         cardBody.appendChild(cardTitle);
+        cardBody.appendChild(boutoncard);
         card.appendChild(cardImg);
         card.appendChild(cardBody);
         cardContainer.appendChild(card);

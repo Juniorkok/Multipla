@@ -1,16 +1,17 @@
-// Definir prop_access dans le prototype d'Object
-// Object.prototype.prop_access = function(path) {
-// 	const input = this;
-// 	const pathArray = path.split('.');
-//   let object;
+const prop_access = (object, path) => {
+  object = object || {};
+  if(!path) return object;
+  const pathArray = path.split(".");
 
-// 	for (let i=0 ; i < pathArray.length; i++) {
-// 		if(input[pathArray[i]] === undefined) {
-// 			console.log("path not exist");
-// 			return null ;
-// 		}
-// 		object = input[pathArray[i]];
-//   }
+  for (let i = 0; i< pathArray.length; i++) {
+    object = object[pathArray[i]];
+    if(object === undefined) {
+      console.log(pathArray.slice(0, i+1).join('.') + " not exist");
+      return null;
+    }
+  }
+  
+  return object;
+};
 
-// 	return object;
-// }
+export default prop_access;

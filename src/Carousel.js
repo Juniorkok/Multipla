@@ -48,18 +48,36 @@ export default class Carousel {
 
     // Boutton gauche
     const buttonLeft = createDOMElement('a', ['carousel-control-prev'], {
-      'href': '#carouselExampleControls',
       'role': 'button',
       'data-slide': 'prev'
+    });
+    buttonLeft.addEventListener('click', function() {
+      const currentActive = carouselContent.querySelectorAll('.active');
+      currentActive[0].classList.remove('active');
+
+      if(currentActive[0].previousSibling !== null) {
+        currentActive[0].previousSibling.classList.add('active');
+      } else {
+        carouselContent.childNodes[voitures.length - 1].classList.add('active');
+      }
     });
     buttonLeft.appendChild(createDOMElement('span', ['carousel-control-prev-icon'], {'aria-hidden': 'true'}));
     buttonLeft.appendChild(createDOMElement('span', ['sr-only'], {}, 'Pravious'));
 
     // Boutton droite
     const buttonRight = createDOMElement('a', ['carousel-control-next'], {
-      'href': '#carouselExampleControls',
       'role': 'button',
       'data-slide': 'next'
+    });
+    buttonRight.addEventListener('click', function() {
+      const currentActive = carouselContent.querySelectorAll('.active');
+      currentActive[0].classList.remove('active');
+
+      if(currentActive[0].nextSibling !== null) {
+        currentActive[0].nextSibling.classList.add('active');
+      } else {
+        carouselContent.childNodes[0].classList.add('active');
+      }
     });
     buttonRight.appendChild(createDOMElement('span', ['carousel-control-next-icon'], {'aria-hidden': 'true'}));
     buttonRight.appendChild(createDOMElement('span', ['sr-only'], {}, 'Next'));

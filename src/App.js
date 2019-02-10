@@ -1,7 +1,7 @@
 import Header from './Header.js';
 import Carousel from './Carousel.js';
 import Content from './Content.js';
-import details from './details.js';
+import Details from './Details.js';
 
 export default class App {
   constructor(parent) {
@@ -9,7 +9,7 @@ export default class App {
     this.header = new Header(parent);
     this.carousel = new Carousel(parent);
     this.content = new Content(parent);
-    this.details = new  details(parent);
+    this.details = new  Details(parent);
     this.url = '';
     this.updateUrl();
     this.router();
@@ -33,7 +33,7 @@ export default class App {
   render() {
     this.parent.innerHTML = '';
 
-    switch(this.url) {
+    switch(this.url.split('/')[0]) {
       case '/':
       case 'accueil':
         document.title = 'Accueil';
@@ -49,12 +49,17 @@ export default class App {
         break;
 
       case 'details':
+        const id = this.url.split('/')[1];
+        if(id === undefined) {
+          window.location = 'http://localhost:8080/#accueil';
+        }
         document.title = 'Détails'
         this.header.render();
-        this.details.render();
+        this.details.render(id);
         break;
 
-      default: break;
+      default:
+        break;
     }
   }
 };

@@ -1,47 +1,72 @@
-const compare_objects = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2)
+const type_check_v1 = (data, type) => {
+  switch (typeof data) {
+    case "number":
+    case "string":
+    case "boolean":
+    case "undefined":
+    case "function":
+      return type === typeof data;
+    case "object":
+      switch (type) {
+        case "null":
+          return data === null;
+        case "array":
+          return Array.isArray(data);
+        default:
+          return data !== null && !Array.isArray(data);
+      }
 
-const type_check_v1 = (val, type) => {
-  switch (type.toLowerCase()) {
-    case 'array':
-      return Array.isArray(val);
-    case 'null':
-      return val === null;
-    case 'object':
-      return !Array.isArray(val) && val !== null && typeof val === 'object';
-    default:
-      return typeof val === type;
   }
+
+  return false;
 };
 
-const type_check_v2 = (val, check) => {
-  let ok = false;
-  if (check.hasOwnProperty('type')) {
-    ok = type_check_v1(val, check.type);
-    if (!ok) return false;
+const type_check_v2 = (data, conf) => {
+  for (let key of Object.keys(conf)) {
+    switch (key) {
+      case 'type':
+        if (!type_check_v1(data, conf[key])) return false;
+        break;
+      case 'value':
+        if (JSON.stringify(data) !== JSON.stringify(conf[key])) return false;
+        break;
+      case 'enum':
+        let valid = false;
+        for (let value of conf[key]) {
+          valid = type_check_v2(data, { value });
+          if (valid) break;
+        }
+        if (!valid) return false;
+    }
   }
-  if (check.hasOwnProperty('value')) {
-    ok = typeof val === 'object' ? compare_objects(check.value, val) : check.value === val;
-    if (!ok) return false;
-  }
-  if (check.hasOwnProperty('enum')) {
-    ok = check.enum
-      .find(enumVal => typeof enumVal === 'object' ?
-        compare_objects(enumVal, val) :
-        Object.is(enumVal, val)
-      ) !== undefined;
-    if (!ok) return false;
-  }
-  return ok;
+
+  return true;
 };
 
-const type_check = (val, check) => {
-  if (check.hasOwnProperty('properties')) {
-    return Object.entries(check.properties)
-      .filter(([prop, propCheck]) => type_check(val[prop], propCheck))
-      .length === Object.values(check.properties).length;
+const type_check = (data, conf) => {
+  for (let key of Object.keys(conf)) {
+    switch (key) {
+      case 'type':
+      case 'value':
+      case 'enum':
+        let newConf = {};
+        newConf[key] = conf[key];
+        if (!type_check_v2(data, newConf)) return false;
+        break;
+      case 'properties':
+        for (let prop of Object.keys(conf[key])) {
+          if (data[prop] === undefined) return false;
+          if (!type_check(data[prop], conf[key][prop])) return false;
+        }
+        break;
+    }
   }
 
-  return type_check_v2(val, check);
+  return true;
 };
 
-export { type_check_v1, type_check_v2, type_check };
+export {
+  type_check,
+  type_check_v1,
+  type_check_v2
+};

@@ -17,6 +17,8 @@ export default class Carousel {
 
     // Recuperer les voitures depuis le localStorage
     const voitures = JSON.parse(localStorage.getItem('voitures'));
+      // Recuperer les motos depuis le localStorage
+    const motos = JSON.parse(localStorage.getItem('motos'));
 
     // Parcourir les voitures
     voitures.map((voiture) => {
@@ -44,6 +46,33 @@ export default class Carousel {
       }
     });
 
+
+      // Parcourir les motos
+      motos.map((moto) => {
+
+          if(typeCheckers.type_check_v2(moto.nom, 'string') &&
+              typeCheckers.type_check_v2(moto.image, 'string')) {
+
+              const item = createDOMElement('div', ['carousel-item']);
+
+              const card = createDOMElement('div', ['card']);
+              const cardImg = createDOMElement('img', ['card-img-top'], {
+                  'src': moto.image,
+                  'alt': moto.nom
+              });
+              cardImg.style.height = '480px';
+              const cardBody = createDOMElement('div', ['card-body']);
+              const cardTitle = createDOMElement('h2', ['card-title'], {}, moto.nom);
+              cardTitle.style.textAlign = 'center';
+              cardBody.appendChild(cardTitle);
+              card.appendChild(cardImg);
+              card.appendChild(cardBody);
+
+              item.appendChild(card);
+              carouselContent.appendChild(item);
+          }
+      });
+
     carouselContent.childNodes[0].classList.add('active');
 
     // Boutton gauche
@@ -58,7 +87,7 @@ export default class Carousel {
       if(currentActive[0].previousSibling !== null) {
         currentActive[0].previousSibling.classList.add('active');
       } else {
-        carouselContent.childNodes[voitures.length - 1].classList.add('active');
+        carouselContent.childNodes[((voitures.length)+(motos.length)) - 1].classList.add('active');
       }
     });
     buttonLeft.appendChild(createDOMElement('span', ['carousel-control-prev-icon'], {'aria-hidden': 'true'}));

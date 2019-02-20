@@ -8,7 +8,7 @@ export default class Header {
   render() {
     // Creer la navbar avec les liens
     const navbar = createDOMElement('div', ['navbar', 'navbar-expand-lg', 'navbar-light', 'bg-light']);
-    const navbarBrand = createDOMElement('a', ['navbar-brand'], {}, 'Voitures');
+    const navbarBrand = createDOMElement('a', ['navbar-brand'], {}, 'Voitures/Motos');
     const buttonBrand = createDOMElement('button', ['navbar-toggler'], {
       'type': 'button',
       'data-toggle': 'collapse',

@@ -27,13 +27,13 @@ const motos = [
         datedeparution: '19/02/2018'
     },
     {
-        nom: 'BMW K 1200 R',
-        image: 'https://ridermagazine.com/wp-content/uploads/2011/09/2006_BMW_K1200R_left_side1.jpg',
+        nom: 'MV Agusta F4 RR - 201 ch',
+        image: 'http://www.lerepairedesmotards.com/img/dossiers/motos/top-10-des-motos-de-serie-les-plus-puissantes-mv-agusta-f4-rr_hd.jpg',
         datedeparution: '19/02/2018'
     },
     {
-        nom: 'BMW K 1200 R',
-        image: 'https://ridermagazine.com/wp-content/uploads/2011/09/2006_BMW_K1200R_left_side1.jpg',
+        nom: 'Kawasaki ZX-10R - 200 ch',
+        image: 'http://www.lerepairedesmotards.com/img/dossiers/motos/top-10-des-motos-de-serie-les-plus-puissantes-kawasaki-zx10r_hd.jpg',
         datedeparution: '19/02/2018'
     }
 

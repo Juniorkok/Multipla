@@ -2,6 +2,7 @@ import Header from './Header.js';
 import Carousel from './Carousel.js';
 import Content from './Content.js';
 import Details from './Details.js';
+import DetailsMoto from './DetailsMoto.js';
 import ContentMoto from './ContentMoto.js';
 
 export default class App {
@@ -12,6 +13,7 @@ export default class App {
     this.content = new Content(parent);
     this.contentmoto = new ContentMoto(parent);
     this.details = new  Details(parent);
+    this.detailsmoto = new  DetailsMoto(parent);
     this.url = '';
     this.updateUrl();
     this.router();
@@ -65,6 +67,17 @@ export default class App {
         this.header.render();
         this.details.render(id);
         break;
+
+
+        case 'detailsmoto':
+            const idm = this.url.split('/')[1];
+            if(idm === undefined) {
+                window.location = 'http://localhost:8080/#accueil';
+            }
+            document.title = 'DétailsMoto'
+            this.header.render();
+            this.detailsmoto.render(idm);
+            break;
 
       default:
         break;

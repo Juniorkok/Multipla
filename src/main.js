@@ -19,11 +19,33 @@ const voitures = [
   }
 ];
 
+const motos = [
+
+    {
+        nom: 'BMW K 1200 R',
+        image: 'https://ridermagazine.com/wp-content/uploads/2011/09/2006_BMW_K1200R_left_side1.jpg',
+        datedeparution: '19/02/2018'
+    },
+    {
+        nom: 'BMW K 1200 R',
+        image: 'https://ridermagazine.com/wp-content/uploads/2011/09/2006_BMW_K1200R_left_side1.jpg',
+        datedeparution: '19/02/2018'
+    },
+    {
+        nom: 'BMW K 1200 R',
+        image: 'https://ridermagazine.com/wp-content/uploads/2011/09/2006_BMW_K1200R_left_side1.jpg',
+        datedeparution: '19/02/2018'
+    }
+
+];
+
 // Stocker les donnes dans le localStorage
 if(!localStorage.getItem('voitures')) {
   localStorage.setItem('voitures', JSON.stringify(voitures));
 }
-
+if(!localStorage.getItem('motos')) {
+    localStorage.setItem('motos', JSON.stringify(motos));
+}
 // Initialiser l'application
 const app = new App(document.getElementById('root'));
 app.render();

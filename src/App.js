@@ -2,6 +2,7 @@ import Header from './Header.js';
 import Carousel from './Carousel.js';
 import Content from './Content.js';
 import Details from './Details.js';
+import ContentMoto from './ContentMoto.js';
 
 export default class App {
   constructor(parent) {
@@ -9,6 +10,7 @@ export default class App {
     this.header = new Header(parent);
     this.carousel = new Carousel(parent);
     this.content = new Content(parent);
+    this.contentmoto = new ContentMoto(parent);
     this.details = new  Details(parent);
     this.url = '';
     this.updateUrl();
@@ -47,6 +49,12 @@ export default class App {
         this.header.render();
         this.content.render();
         break;
+
+        case 'motos':
+            document.title = 'Motos';
+            this.header.render();
+            this.contentmoto.render();
+            break;
 
       case 'details':
         const id = this.url.split('/')[1];

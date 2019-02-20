@@ -27,6 +27,8 @@ export default class Header {
     const navbarContentList = createDOMElement('ul', ['navbar-nav', 'mr-auto']);
     const accueilLi = createDOMElement('li', ['nav-item']);
     const accueilA = createDOMElement('a', ['nav-link'], {'href': '#accueil'}, 'Accueil');
+    const motoLi = createDOMElement('li', ['nav-item']);
+    const motoA = createDOMElement('a', ['nav-link'], {'href': '#motos'}, 'Motos');
     const voituresLi = createDOMElement('li', ['nav-item']);
     const voituresA = createDOMElement('a', ['nav-link'], {'href': '#voitures'}, 'Voitures');
     const navbarContentRight = createDOMElement('ul', ['navbar-nav','ml-auto']);
@@ -53,8 +55,10 @@ export default class Header {
 
     accueilLi.appendChild(accueilA);
     voituresLi.appendChild(voituresA);
+    motoLi.appendChild(motoA);
     navbarContentList.appendChild(accueilLi);
     navbarContentList.appendChild(voituresLi);
+    navbarContentList.appendChild(motoLi);
     navbarContent.appendChild(navbarContentList);
     labelSwitch.append(inputSwitch);
     labelSwitch.append(spanSwitch);

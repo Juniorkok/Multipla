@@ -32,7 +32,7 @@ export default class ContentMoto {
                 cardImg.style.height = '200px';
                 const cardBody = createDOMElement('div', ['card-body']);
                 const cardTitle = createDOMElement('h5', ['card-title'], {}, prop_access(moto, 'nom'));
-                const boutoncard = createDOMElement('a', ['btn','btn-primary'] , {'href': '#details/' + index }, 'Détails');
+                const boutoncard = createDOMElement('a', ['btn','btn-primary'] , {'href': '#detailsmoto/' + index }, 'Détails');
 
                 // Cree le click listener
                 function onClick() {
@@ -44,7 +44,7 @@ export default class ContentMoto {
                         motos[index].nom = input.value;
 
                         // Modifier la valeur dans lo localStorage
-                        localStorage.setItem('motos', JSON.stringify(voitures));
+                        localStorage.setItem('motos', JSON.stringify(motos));
                         cardBody.removeChild(input);
 
                         // Modifie la valeur dans l'interface

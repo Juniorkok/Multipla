@@ -44,6 +44,7 @@ export default class App {
         this.header.render();
         this.carousel.render();
         this.content.render();
+        this.contentmoto.render();
         break;
 
       case 'voitures':

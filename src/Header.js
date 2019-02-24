@@ -8,7 +8,7 @@ export default class Header {
   render() {
     // Creer la navbar avec les liens
     const navbar = createDOMElement('div', ['navbar', 'navbar-expand-lg', 'navbar-light', 'bg-light']);
-    const navbarBrand = createDOMElement('a', ['navbar-brand'], {}, 'Voitures/Motos');
+    const navbarBrand = createDOMElement('a', ['navbar-brand'], {}, 'Voitures/Motos/Camions');
     const buttonBrand = createDOMElement('button', ['navbar-toggler'], {
       'type': 'button',
       'data-toggle': 'collapse',
@@ -31,6 +31,8 @@ export default class Header {
     const motoA = createDOMElement('a', ['nav-link'], {'href': '#motos'}, 'Motos');
     const voituresLi = createDOMElement('li', ['nav-item']);
     const voituresA = createDOMElement('a', ['nav-link'], {'href': '#voitures'}, 'Voitures');
+    const camionsLi = createDOMElement('li', ['nav-item']);
+    const camionsA = createDOMElement('a', ['nav-link'], {'href': '#motos'}, 'Motos');
     const navbarContentRight = createDOMElement('ul', ['navbar-nav','ml-auto']);
     const toggleSun = createDOMElement('li', ['nav-item', 'center']);
     const toggleLabel = createDOMElement('li', ['nav-item']);
@@ -56,9 +58,11 @@ export default class Header {
     accueilLi.appendChild(accueilA);
     voituresLi.appendChild(voituresA);
     motoLi.appendChild(motoA);
+    camionsLi.appendChild(camionsA);
     navbarContentList.appendChild(accueilLi);
     navbarContentList.appendChild(voituresLi);
     navbarContentList.appendChild(motoLi);
+    navbarContentList.appendChild(camionsLi);
     navbarContent.appendChild(navbarContentList);
     labelSwitch.append(inputSwitch);
     labelSwitch.append(spanSwitch);

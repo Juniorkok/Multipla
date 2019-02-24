@@ -39,12 +39,35 @@ const motos = [
 
 ];
 
+const camions = [
+
+    {
+        nom: 'Renault Magnum',
+        image: 'https://st.mascus.com/imagetilewm/product/59fc4207/renault-magnum-500-18-dxi-euro,852dcf94.jpg',
+        datedeparution: '22/02/2018'
+    },
+    {
+        nom: 'Mercedes-Benz Le Nouvel Actros',
+        image: 'http://www.transportinfo.fr/wp-content/uploads/2018/09/ACTROS-678x381.jpg',
+        datedeparution: '22/02/2018'
+    },
+    {
+        nom: 'Volkswagen Constellation',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/0/06/IAA_Nutzfahrzeuge_-_VW_Constellation.jpg',
+        datedeparution: '23/02/2018'
+    }
+
+];
+
 // Stocker les donnes dans le localStorage
 if(!localStorage.getItem('voitures')) {
   localStorage.setItem('voitures', JSON.stringify(voitures));
 }
 if(!localStorage.getItem('motos')) {
     localStorage.setItem('motos', JSON.stringify(motos));
+}
+if(!localStorage.getItem('camions')) {
+    localStorage.setItem('camions', JSON.stringify(camions));
 }
 // Initialiser l'application
 const app = new App(document.getElementById('root'));

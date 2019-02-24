@@ -4,6 +4,8 @@ import Content from './Content.js';
 import Details from './Details.js';
 import DetailsMoto from './DetailsMoto.js';
 import ContentMoto from './ContentMoto.js';
+import DetailsCamion from './DetailsCamion.js';
+import ContentCamion from './ContentCamion.js';
 
 export default class App {
   constructor(parent) {
@@ -12,8 +14,10 @@ export default class App {
     this.carousel = new Carousel(parent);
     this.content = new Content(parent);
     this.contentmoto = new ContentMoto(parent);
+    this.contentcamion = new ContentCamion(parent);
     this.details = new  Details(parent);
     this.detailsmoto = new  DetailsMoto(parent);
+    this.detailsCamion = new DetailsCamion(parent);
     this.url = '';
     this.updateUrl();
     this.router();
@@ -45,6 +49,7 @@ export default class App {
         this.carousel.render();
         this.content.render();
         this.contentmoto.render();
+        this.contentcamion.render();
         break;
 
       case 'voitures':
@@ -53,11 +58,17 @@ export default class App {
         this.content.render();
         break;
 
-        case 'motos':
-            document.title = 'Motos';
-            this.header.render();
-            this.contentmoto.render();
-            break;
+      case 'motos':
+          document.title = 'Motos';
+          this.header.render();
+          this.contentmoto.render();
+          break;
+
+      case 'camions':
+          document.title = 'Camions';
+          this.header.render();
+          this.contentcamion.render();
+          break;
 
       case 'details':
         const id = this.url.split('/')[1];
@@ -70,15 +81,25 @@ export default class App {
         break;
 
 
-        case 'detailsmoto':
-            const idm = this.url.split('/')[1];
-            if(idm === undefined) {
-                window.location = 'http://localhost:8080/#accueil';
-            }
-            document.title = 'DétailsMoto'
-            this.header.render();
-            this.detailsmoto.render(idm);
-            break;
+      case 'detailsmoto':
+          const idm = this.url.split('/')[1];
+          if(idm === undefined) {
+              window.location = 'http://localhost:8080/#accueil';
+          }
+          document.title = 'DétailsMoto'
+          this.header.render();
+          this.detailsmoto.render(idm);
+          break;
+
+      case 'detailscamion':
+          const idc = this.url.split('/')[1];
+          if(idc === undefined) {
+              window.location = 'http://localhost:8080/#accueil';
+          }
+          document.title = 'DétailsCamion'
+          this.header.render();
+          this.detailscamion.render(idc);
+          break;
 
       default:
         break;

@@ -17,7 +17,7 @@ export default class App {
     this.contentcamion = new ContentCamion(parent);
     this.details = new  Details(parent);
     this.detailsmoto = new  DetailsMoto(parent);
-    this.detailsCamion = new DetailsCamion(parent);
+    this.detailscamion = new DetailsCamion(parent);
     this.url = '';
     this.updateUrl();
     this.router();
@@ -91,14 +91,15 @@ export default class App {
           this.detailsmoto.render(idm);
           break;
 
+
       case 'detailscamion':
-          const idc = this.url.split('/')[1];
-          if(idc === undefined) {
+          const idt = this.url.split('/')[1];
+          if(idt === undefined) {
               window.location = 'http://localhost:8080/#accueil';
           }
           document.title = 'DétailsCamion'
           this.header.render();
-          this.detailscamion.render(idc);
+          this.detailscamion.render(idt);
           break;
 
       default:

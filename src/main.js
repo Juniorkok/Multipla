@@ -64,10 +64,10 @@ if(!localStorage.getItem('voitures')) {
   localStorage.setItem('voitures', JSON.stringify(voitures));
 }
 if(!localStorage.getItem('motos')) {
-    localStorage.setItem('motos', JSON.stringify(motos));
+  localStorage.setItem('motos', JSON.stringify(motos));
 }
 if(!localStorage.getItem('camions')) {
-    localStorage.setItem('camions', JSON.stringify(camions));
+  localStorage.setItem('camions', JSON.stringify(camions));
 }
 // Initialiser l'application
 const app = new App(document.getElementById('root'));

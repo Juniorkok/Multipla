@@ -32,7 +32,7 @@ export default class Header {
     const voituresLi = createDOMElement('li', ['nav-item']);
     const voituresA = createDOMElement('a', ['nav-link'], {'href': '#voitures'}, 'Voitures');
     const camionsLi = createDOMElement('li', ['nav-item']);
-    const camionsA = createDOMElement('a', ['nav-link'], {'href': '#motos'}, 'Motos');
+    const camionsA = createDOMElement('a', ['nav-link'], {'href': '#camions'}, 'Camions');
     const navbarContentRight = createDOMElement('ul', ['navbar-nav','ml-auto']);
     const toggleSun = createDOMElement('li', ['nav-item', 'center']);
     const toggleLabel = createDOMElement('li', ['nav-item']);

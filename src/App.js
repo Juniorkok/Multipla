@@ -42,7 +42,15 @@ export default class App {
     this.parent.innerHTML = '';
 
     switch(this.url.split('/')[0]) {
-      case '/':
+      case '':
+      	document.title = 'Accueil';
+        this.header.render();
+        this.carousel.render();
+        this.content.render();
+        this.contentmoto.render();
+        this.contentcamion.render();
+        break;
+
       case 'accueil':
         document.title = 'Accueil';
         this.header.render();

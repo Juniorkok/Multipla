@@ -48,7 +48,7 @@ export default class Content {
             cardBody.removeChild(input);
 
             // Modifie la valeur dans l'interface
-            const newCardTitle = createDOMElement('h5', ['card-title'], {}, prop_access(voitures[index], nom));
+            const newCardTitle = createDOMElement('h5', ['card-title'], {}, prop_access(voiture, 'nom'));
             newCardTitle.addEventListener('click', onClick);
             cardBody.appendChild(newCardTitle);
             cardBody.appendChild(boutoncard);

@@ -177,3 +177,9 @@ input:checked + .slider:before {
       transform: rotate(360deg);
     }
   }
+  .card-price{
+    font-weight: bold;
+  }
+  .card-resume{
+    padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+  }

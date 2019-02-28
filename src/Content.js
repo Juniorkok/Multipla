@@ -30,8 +30,11 @@ export default class Content {
           'alt': prop_access(voiture, 'nom')
         });
         cardImg.style.height = '200px';
+        const cardResume = createDOMElement('div', ['card-resume']);
         const cardBody = createDOMElement('div', ['card-body']);
         const cardTitle = createDOMElement('h5', ['card-title'], {}, prop_access(voiture, 'nom'));
+        const cardDescription = createDOMElement('div', ['card-description'], {}, prop_access(voiture, 'description'));
+        const cardPrice = createDOMElement('p', ['card-price'], {}, prop_access(voiture, 'prix'));
         const boutoncard = createDOMElement('a', ['btn','btn-primary'] , {'href': '#details/' + index }, 'Détails');
 
         // Cree le click listener
@@ -63,8 +66,12 @@ export default class Content {
         cardTitle.addEventListener('click', onClick);
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(boutoncard);
+        cardResume.appendChild(cardDescription);
+        cardResume.appendChild(cardPrice);
+
         card.appendChild(cardImg);
         card.appendChild(cardBody);
+        card.appendChild(cardResume);
         cardContainer.appendChild(card);
         row.appendChild(cardContainer);
       }
